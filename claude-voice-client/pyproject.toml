@@ -1,0 +1,19 @@
+[project]
+name = "claude-voice-client"
+version = "1.0.0"
+description = "Voice input client for Claude Code"
+requires-python = ">=3.9"
+dependencies = [
+    "pyaudio>=0.2.14",
+    "pynput>=1.7.6",
+    "requests>=2.31.0",
+    "pyyaml>=6.0.1",
+    "colorama>=0.4.6",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+claude-voice = "src.main:main"
