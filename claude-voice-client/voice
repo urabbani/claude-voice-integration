@@ -1,0 +1,14 @@
+#!/bin/bash
+# Voice command - always available wrapper for voice-record
+# Usage: voice
+
+SCRIPT_DIR="$HOME/claude-voice-client"
+PYTHON="$SCRIPT_DIR/venv/bin/python"
+
+if [ ! -f "$PYTHON" ]; then
+    echo "❌ Voice client not installed. Run: cd ~/claude-voice-client && ./setup.sh"
+    exit 1
+fi
+
+cd "$SCRIPT_DIR"
+exec "$PYTHON" voice-record.py
