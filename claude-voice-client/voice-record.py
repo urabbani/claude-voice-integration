@@ -86,20 +86,41 @@ def main():
         if text:
             print(f'✅ "{text}"')
 
-            # Copy to clipboard
+            # Copy to clipboard (try multiple methods)
+            import subprocess
+            copied = False
+
+            # Method 1: wl-copy (Wayland)
             try:
-                import subprocess
                 subprocess.run(
                     ['wl-copy'],
                     input=text.encode(),
                     check=True,
                     stderr=subprocess.DEVNULL
                 )
+                copied = True
+            except:
+                pass
+
+            # Method 2: Windows clip.exe (WSL)
+            if not copied:
+                try:
+                    subprocess.run(
+                        ['clip.exe'],
+                        input=text.encode(),
+                        check=True,
+                        stderr=subprocess.DEVNULL
+                    )
+                    copied = True
+                except:
+                    pass
+
+            if copied:
                 print()
                 print("📋 Copied to clipboard (paste with Ctrl+Shift+V)")
-            except:
+            else:
                 print()
-                print("(Clipboard not available)")
+                print("(Clipboard not available - select text above to copy)")
 
             # Write to pipe for auto-paste
             try:
