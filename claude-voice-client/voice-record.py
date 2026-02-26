@@ -16,8 +16,8 @@ sys.path.insert(0, str(SCRIPT_DIR / "src"))
 from audio_recorder import AudioRecorder
 from server_client import ServerClient
 
-# Pipe for auto-paste to Claude Code
-VOICE_PIPE = "/tmp/claude-voice-pipe"
+# Pipe for auto-paste
+VOICE_PIPE = "/tmp/claude-voice-inject"
 
 
 def main():
